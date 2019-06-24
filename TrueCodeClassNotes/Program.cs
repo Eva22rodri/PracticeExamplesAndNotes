@@ -6,35 +6,19 @@ namespace ClassNotes
     {
         static void Main(string[] args)
         {
+            int total1 = AddNumbers(5, 4, 3);
+            int total2 = AddNumbers(10, 12, 2);
+            int total3 = AddNumbers(total1, total2, 3);
+            Console.WriteLine("Grand total is " + total3);
 
-            // KINDS OF LOOPs
+            
+        }
 
-            //for loop
-            for(int i = 1; i < 100; i++)
-            {
-                System.Threading.Thread.Sleep(1000); // this is not needed for the loop, it is extra just to show how to slow down how fast console prints.
-                Console.WriteLine(i + 1); ///"This will print the number ONE through ONE HUNDRED"
-            }
-
-            //foreach
-            int[] numbers = { 4, 7, 3, 2, 5, 1, 9 }; // collection of numbers
-            foreach(int xyz in numbers)
-            {
-                Console.WriteLine(xyz);
-            }
-
-            //while loop '
-            bool playerIsAlive = true;
-            while (playerIsAlive == true)// great as long as something is true
-            {
-                // play the game
-            }
-
-            //do while loop
-            do
-            {
-                // This will always run at else once and depending on the while, it may continue to run.
-            } while (2 == 1);
+        static int AddNumbers(int n1, int n2, int n3)
+        {
+            int sum = n1 + n2 + n3;
+            return sum;
         }
     }
 }
+,)
