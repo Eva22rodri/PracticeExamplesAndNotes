@@ -6,16 +6,16 @@ namespace ClassNotes
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Let's add 4 numbers.");
+            int numberOfAdditions = GetIntegerFromUser("How many numbers would you like to add?");
 
-            int number1 = GetIntegerFromUser("What is number 1");
-            int number2 = GetIntegerFromUser("What is number 2");
-            int number3 = GetIntegerFromUser("What is number 3");
-            int number4 = GetIntegerFromUser("What is number 4?");
+            int grandTotal = 0;
+            for (int i = 0; i < numberOfAdditions; i++)
+            {
+                int number = GetIntegerFromUser("What is number " + (i + 1) + "?"); //Calling 'GetIntegerFromUser' method > writing message + i increased value by 1)
+                grandTotal = grandTotal + number; 
+            }
 
-            int total = number1 + number2 + number3 + number4;
-
-            Console.WriteLine("The total is " + total);
+            Console.WriteLine("The total is " + grandTotal);
         }
 
         static int GetIntegerFromUser(string prompt)
