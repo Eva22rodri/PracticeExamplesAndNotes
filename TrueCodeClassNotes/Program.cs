@@ -4,45 +4,51 @@ namespace ClassNotes
 {
     class Program
     {
-        static int AddNumbersFrom1ToN(int n) 
-        {
-            int total = 0;
-            for(int i = 1; i <= n; i++)
-            {
-                total = total + i;
-            }
-            return total;
-        }
-
-        static void AskNumericQuestionThenDisplayTotal(string question)//this method is not really doing anything just returning something so we are making this a "void"
-        {
-            Console.WriteLine(question); // "question" has to be made a parameter because we have multiple questions
-            string responseAsAString = Console.ReadLine();
-            int response = int.Parse(responseAsAString);
-
-            int total = AddNumbersFrom1ToN(response);// will add all the numbers given using Calling AddNumbersFrom1ToN
-
-            Console.WriteLine("If you add all the numbers from 1-" + response + ", the total is " + total);
-        }
         static void Main(string[] args)
         {
-            //    Console.WriteLine("What is your favorite number?");
-            //    string favoriteNumberAsAString = Console.ReadLine();
-            //    int favoriteNumber = int.Parse(favoriteNumberAsAString);
-            //    int total = AddNumbersFrom1ToN(favoriteNumber); 
-            //    Console.WriteLine("If you add all the numbers from 1-" + favoriteNumber + ", the total is " + total); 
-            //**** The following line replaces all the code commented out from above. *****
+            for(int i = 1; i <= 10; i++)
+            {
+                DisplayOddsFrom1ToN(i); //same as code vvv
+            }
 
-            AskNumericQuestionThenDisplayTotal("What is your favorite number?");
+            // This does the same thing as the method above
+            //DisplayOddsFrom1ToN(1);
+            //DisplayOddsFrom1ToN(2);
+            //DisplayOddsFrom1ToN(3);
+            //DisplayOddsFrom1ToN(4);
+            //DisplayOddsFrom1ToN(5);
+            //DisplayOddsFrom1ToN(6);
+            //DisplayOddsFrom1ToN(7);
+        }
 
-            //Console.WriteLine("What is your favorite year?");
-            //string favoriteYearAsAString = Console.ReadLine();
-            //int favoriteYear = int.Parse(favoriteNumberAsAString);
-            //int totalYears = AddNumbersFrom1ToN(favoriteYear);
-            //Console.WriteLine("If you add all the numbers from 1-" + favoriteYear + ", the total is " + totalYears);
-            //***** The following line replaces all the code commented out from above. *****
-
-            AskNumericQuestionThenDisplayTotal("what is your favorite year?");
+        static void DisplayOddsFrom1ToN(int n)
+        {
+            for (int i = 1; i < n; i ++)
+            {
+                if(i % 2 != 0) 
+                {
+                   Console.Write(i + " "); // this prints ( 1 3 5 7 9 11 13 15 17..etc..) HORIZONTALLY
+                }
+            }
+            Console.WriteLine();
+            
         }
     }
 }
+
+
+//**** Other Notes  ****
+
+//static void DisplayOddsFrom1To100()
+//{
+//for (int i = 1; i < 100; i += 2)
+//{
+//    if (i % 2 != 0) // (  %  ) runs modulous aka the remainder when divided by 2. 0 means it is even.
+//    {
+//        // Console.Write(i); // this prints ( 1357911131517..etc..)
+//        Console.Write(i + " "); // this prints ( 1 3 5 7 9 11 13 15 17..etc..) HORIZONTALLY.
+//                                //Console.WriteLine(i); // this prints vertically, single values.
+//                                //dsaf
+//    }
+//}
+//}
