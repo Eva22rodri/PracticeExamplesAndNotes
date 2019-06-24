@@ -4,7 +4,7 @@ namespace ClassNotes
 {
     class Program
     {
-        static int AddNumbersFrom1ToN(int n) // the reusable algorithm for adding numbers from ONE to N. 
+        static int AddNumbersFrom1ToN(int n) 
         {
             int total = 0;
             for(int i = 1; i <= n; i++)
@@ -13,27 +13,36 @@ namespace ClassNotes
             }
             return total;
         }
+
+        static void AskNumericQuestionThenDisplayTotal(string question)//this method is not really doing anything just returning something so we are making this a "void"
+        {
+            Console.WriteLine(question); // "question" has to be made a parameter because we have multiple questions
+            string responseAsAString = Console.ReadLine();
+            int response = int.Parse(responseAsAString);
+
+            int total = AddNumbersFrom1ToN(response);// will add all the numbers given using Calling AddNumbersFrom1ToN
+
+            Console.WriteLine("If you add all the numbers from 1-" + response + ", the total is " + total);
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine("What is your favorite number?");
-            string favoriteNumberAsAString = Console.ReadLine();
-            int favoriteNumber = int.Parse(favoriteNumberAsAString);
+            //    Console.WriteLine("What is your favorite number?");
+            //    string favoriteNumberAsAString = Console.ReadLine();
+            //    int favoriteNumber = int.Parse(favoriteNumberAsAString);
+            //    int total = AddNumbersFrom1ToN(favoriteNumber); 
+            //    Console.WriteLine("If you add all the numbers from 1-" + favoriteNumber + ", the total is " + total); 
+            //**** The following line replaces all the code commented out from above. *****
 
-            int total = AddNumbersFrom1ToN(favoriteNumber); //this is calling the method of AddNumbersFrom1ToN using the value given by user for favoriteNumber 
-            //for (int i = 1; i <= 10; i++) because of the line above, this for(loop) is no longer needed.
-            //{      
-            //    total = total + i; 
-            //}
-            Console.WriteLine("If you add all the numbers from 1-" + favoriteNumber + ", the total is " + total); 
+            AskNumericQuestionThenDisplayTotal("What is your favorite number?");
 
-            Console.WriteLine("What is your favorite year?");
-            string favoriteYearAsAString = Console.ReadLine();
-            int favoriteYear = int.Parse(favoriteNumberAsAString);
-            //instead of using a for(loop) we can just call the AddNumbersFrom1ToN method.
-            int totalYears = AddNumbersFrom1ToN(favoriteYear);
+            //Console.WriteLine("What is your favorite year?");
+            //string favoriteYearAsAString = Console.ReadLine();
+            //int favoriteYear = int.Parse(favoriteNumberAsAString);
+            //int totalYears = AddNumbersFrom1ToN(favoriteYear);
+            //Console.WriteLine("If you add all the numbers from 1-" + favoriteYear + ", the total is " + totalYears);
+            //***** The following line replaces all the code commented out from above. *****
 
-            Console.WriteLine("If you add all the numbers from 1-" + favoriteYear + ", the total is " + totalYears);
-
+            AskNumericQuestionThenDisplayTotal("what is your favorite year?");
         }
     }
 }
