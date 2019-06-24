@@ -4,29 +4,36 @@ namespace ClassNotes
 {
     class Program
     {
+        static int AddNumbersFrom1ToN(int n) // the reusable algorithm for adding numbers from ONE to N. 
+        {
+            int total = 0;
+            for(int i = 1; i <= n; i++)
+            {
+                total = total + i;
+            }
+            return total;
+        }
         static void Main(string[] args)
         {
-            //int total = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10; instead of this.... the following code will work better for any value. 
-
             Console.WriteLine("What is your favorite number?");
             string favoriteNumberAsAString = Console.ReadLine();
-            int favoriteNumber = int.Parse(favoriteNumberAsAString); // parse is a method that returns an int... favorite number is originally a string.
-            //favoriteNumber.ToString(); ***NOTE: this is not part of this method. but this would be making an int into a string. 
+            int favoriteNumber = int.Parse(favoriteNumberAsAString);
 
-            int total = 0; //starting at zero
-            for (int i = 1; i <= 10; i++)// add all numbers from 1 to ten
-            {
-                // we want to have a running total.. so everytime this loop runs, we want to add that values to int total.
-                total = total + i; 
-            }
-            Console.WriteLine("If you add all the numbers from 1-" + favoriteNumber + ", the total is " + total); // total will be 55.
+            int total = AddNumbersFrom1ToN(favoriteNumber); //this is calling the method of AddNumbersFrom1ToN using the value given by user for favoriteNumber 
+            //for (int i = 1; i <= 10; i++) because of the line above, this for(loop) is no longer needed.
+            //{      
+            //    total = total + i; 
+            //}
+            Console.WriteLine("If you add all the numbers from 1-" + favoriteNumber + ", the total is " + total); 
 
-        }
+            Console.WriteLine("What is your favorite year?");
+            string favoriteYearAsAString = Console.ReadLine();
+            int favoriteYear = int.Parse(favoriteNumberAsAString);
+            //instead of using a for(loop) we can just call the AddNumbersFrom1ToN method.
+            int totalYears = AddNumbersFrom1ToN(favoriteYear);
 
-        static int AddNumbers(int n1, int n2, int n3)
-        {
-            int sum = n1 + n2 + n3;
-            return sum;
+            Console.WriteLine("If you add all the numbers from 1-" + favoriteYear + ", the total is " + totalYears);
+
         }
     }
 }
