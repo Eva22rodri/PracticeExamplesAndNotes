@@ -7,21 +7,33 @@ namespace ClassNotes
         static void Main(string[] args)
         {
             Console.WriteLine("Let's play a number guessing game!");
-            Console.WriteLine("Enter the max for the range you'd like to play with:");
-            string strMax = Console.ReadLine();
-            int maxValueWanted = int.Parse(strMax);
+            
+            // loop to make sure that the input is an integer
+            int maxValueWanted;
+            bool success;
+            do
+            {
+                Console.WriteLine("Enter the max for the range you'd like to play with:");
+                string strMax = Console.ReadLine();
+                success = int.TryParse(strMax, out maxValueWanted);
+            } while (success == false);
 
             Random rnd = new Random();
             int secretNumber = rnd.Next(1, maxValueWanted + 1);
+
             int guess;
             do
             {
-                Console.ForegroundColor = ConsoleColor.White; 
-                Console.WriteLine("Please guess a number between 1 -" + maxValueWanted + ": ");
+                Console.ForegroundColor = ConsoleColor.White;
 
-                string strGuess = Console.ReadLine();
-                guess = int.Parse(strGuess);
-                // Could do: int guess = int.Parse(Console.ReadLine());
+                bool successfulGuess;
+                do
+                {
+                    Console.WriteLine("Please guess a number between 1 - " + maxValueWanted + ": ");
+                    string strGuess = Console.ReadLine();
+                    successfulGuess = int.TryParse(strGuess, out guess);
+                } while (successfulGuess == false);
+
 
                 if (guess == secretNumber)
                 {
