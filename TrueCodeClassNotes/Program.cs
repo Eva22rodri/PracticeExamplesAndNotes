@@ -4,53 +4,27 @@ namespace ClassNotes
 {
     class Program
     {
-        static int GetIntegerFromUser(string question) //Give a question and this method will do the following.
-        {
-            int integerFromUser;
-            bool success;
-            do
-            {
-                Console.WriteLine("Enter the max for the range you'd like to play with:");
-                string strMax = Console.ReadLine();
-                success = int.TryParse(strMax, out integerFromUser);
-            } while (success == false);
-
-            return integerFromUser;
-        }
         static void Main(string[] args)
         {
-            Console.WriteLine("Let's play a number guessing game!");
+            //****  Arrays ****
 
-            int max = GetIntegerFromUser("Enter the max for the range you'd like to play with:");
+            // The size of an array is set once established it can not be grown nor made smaller. Size is fixed once created.
+            string[] names = ["Ted", "Jill", "Joe"]; // this is an array of names.
+            string name1 = names[0]; // this is telling which name i want 
+            names[0] = "Jane"; // this will change the name at index Zero to Jane.
 
-            Random rnd = new Random();
-            int secretNumber = rnd.Next(1, max + 1);
+            // making a shift to make each name in names its own individual string.
+            // note: almost always working with individual elevments, not the entire array. ex: ted... or jill... not ted jill and joe.
 
-            int score = 0;
-            int guess;
-            do
+            for(int i = 0; i < names.Length; i++)
             {
-                Console.ResetColor();
+                Console.WriteLine(names[i]); // this will print whatever string is at the 'i' value. 
+            }
 
-                Console.WriteLine("Your current score is " + score);
-                guess = GetIntegerFromUser("Please guess a number between 1 - " + max + ": ");
-
-                if (guess > secretNumber)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You were too high, loser! Guess again..");
-                    score += 1;
-                }
-                else if (guess < secretNumber)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("You were too low, loser! Guess again..");
-                    score += 1;
-                }
-            } while (guess != secretNumber);
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("You got it!");
+            foreach (string name in names)
+            {
+                Console.WriteLine(name);  // does the same thing as for loop above. 
+            }
         }
     }
 }
