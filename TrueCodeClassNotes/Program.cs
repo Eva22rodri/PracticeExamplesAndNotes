@@ -6,20 +6,39 @@ namespace ClassNotes
     {
         static void Main(string[] args)
         {
-            int secretNumber = 42;
+            Console.WriteLine("Let's play a number guessing game!");
+            Console.WriteLine("Enter the max for the range you'd like to play with:");
+            string strMax = Console.ReadLine();
+            int maxValueWanted = int.Parse(strMax);
 
-            Console.WriteLine("Please guess a number");
-            string strGuess = Console.ReadLine();
-            int guess = int.Parse(strGuess);
+            Random rnd = new Random();
+            int secretNumber = rnd.Next(1, maxValueWanted + 1);
+            int guess;
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.White; 
+                Console.WriteLine("Please guess a number between 1 -" + maxValueWanted + ": ");
 
-            if (guess == secretNumber)
-            {
-                Console.WriteLine("You got it!");
-            }
-            else
-            {
-                Console.WriteLine("You missed it! You lose!");
-            }
+                string strGuess = Console.ReadLine();
+                guess = int.Parse(strGuess);
+                // Could do: int guess = int.Parse(Console.ReadLine());
+
+                if (guess == secretNumber)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("You got it!");
+                }
+                else if(guess > secretNumber)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You were too high, loser! Guess again..");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("You were too low, loser! Guess again..");
+                }
+            } while (guess != secretNumber);
         }
     }
 }
