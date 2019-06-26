@@ -6,24 +6,20 @@ namespace ClassNotes
     {
         static void Main(string[] args)
         {
-            int numberOfAdditions = GetIntegerFromUser("How many numbers would you like to add?");
+            int secretNumber = 42;
 
-            int grandTotal = 0;
-            for (int i = 0; i < numberOfAdditions; i++)
+            Console.WriteLine("Please guess a number");
+            string strGuess = Console.ReadLine();
+            int guess = int.Parse(strGuess);
+
+            if (guess == secretNumber)
             {
-                int number = GetIntegerFromUser("What is number " + (i + 1) + "?"); //Calling 'GetIntegerFromUser' method > writing message + i increased value by 1)
-                grandTotal = grandTotal + number; 
+                Console.WriteLine("You got it!");
             }
-
-            Console.WriteLine("The total is " + grandTotal);
-        }
-
-        static int GetIntegerFromUser(string prompt)
-        {
-            Console.WriteLine(prompt);
-            string response1 = Console.ReadLine();
-            int number = int.Parse(response1);
-            return number;
+            else
+            {
+                Console.WriteLine("You missed it! You lose!");
+            }
         }
     }
 }
