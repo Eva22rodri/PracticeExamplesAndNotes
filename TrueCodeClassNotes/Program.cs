@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic; //needed to be able to use a LIST
+using System.Collections.Generic; 
 
 
 namespace ClassNotes
@@ -8,18 +8,42 @@ namespace ClassNotes
     {
         static void Main(string[] args)
         {
-            //Arrays size (length) is fixed
-            string[] namesArray = new string[3]; //length of three means there are 2 indexes
-            namesArray[0] = "Alan";
-            namesArray[1] = "Bety";
-            namesArray[2] = "Shay";
+            Console.WriteLine("Do you have any pets?");
+            string response = Console.ReadLine();
 
-            //Lists size (count) can change
-            List<string> namesList = new List<string>();
-            namesList.Add("Alan");
-            namesList.Add("Bety");
-            namesList.Add("Shay");
+            bool success = int.TryParse(response, out int numberOfPets); //This tells us if the user gave us a numbe or not.
+
+            List<string> petNames = new List<string>();
+            List<string> affirmativeResponses = new List<string>() { "y", "yes", "yeah", "yep", "uh huh", "si" };
+
+            while (affirmativeResponses.Contains(response.ToLower()) == true)
+            {
+                Console.WriteLine("What is the name of one of your pets?");
+                string petName = Console.ReadLine();
+                petNames.Add(petName); //Add the petName that is given to us into the petNames list.
+
+                Console.WriteLine("Do you have any more pets?");
+                response = Console.ReadLine();
+
+            }
+            // **** other code that almost did the same thing. Included number input and different steps
+            //    while (ShouldAskForPetName(response, success))
+            //    {
+            //        Console.WriteLine("What is the name of one of your pets?");
+            //        string petName = Console.ReadLine();
+            //        petNames.Add(petName); //Add the petName that is given to us into the petNames list.
+
+            //        Console.WriteLine("Do you have any more pets?");
+            //        response = Console.ReadLine();
+
+            //    }
+            //}
+
+            //static bool ShouldAskForPetName(string response, bool parseSuccess)
+            //{
+            //    bool result = response.ToLower() == "yes" || (parseSuccess == true && response.ToLower() != "no");
+            //    return result;
+            //}
         }
-
     }
 }
