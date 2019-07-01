@@ -6,44 +6,35 @@ namespace ClassNotes
 {
     class Program
     {
-        static void Main(string[] args)
+        public class Cat
         {
-            Console.WriteLine("Do you have any pets?");
-            string response = Console.ReadLine();
-
-            bool success = int.TryParse(response, out int numberOfPets); //This tells us if the user gave us a numbe or not.
-
-            List<string> petNames = new List<string>();
-            List<string> affirmativeResponses = new List<string>() { "y", "yes", "yeah", "yep", "uh huh", "si" };
-
-            while (affirmativeResponses.Contains(response.ToLower()) == true)
+            public string Name { get; set; }
+            public string Color { get; set; }
+            public int Age { get; set; }
+            public void MeetTheCat() // Void is not returning anything it is simply "writing" something.
             {
-                Console.WriteLine("What is the name of one of your pets?");
-                string petName = Console.ReadLine();
-                petNames.Add(petName); //Add the petName that is given to us into the petNames list.
-
-                Console.WriteLine("Do you have any more pets?");
-                response = Console.ReadLine();
-
+                Console.WriteLine("Hello, I'm " + Name + " the " + Color + " colored cat!");
             }
-            // **** other code that almost did the same thing. Included number input and different steps
-            //    while (ShouldAskForPetName(response, success))
-            //    {
-            //        Console.WriteLine("What is the name of one of your pets?");
-            //        string petName = Console.ReadLine();
-            //        petNames.Add(petName); //Add the petName that is given to us into the petNames list.
 
-            //        Console.WriteLine("Do you have any more pets?");
-            //        response = Console.ReadLine();
-
-            //    }
-            //}
-
-            //static bool ShouldAskForPetName(string response, bool parseSuccess)
-            //{
-            //    bool result = response.ToLower() == "yes" || (parseSuccess == true && response.ToLower() != "no");
-            //    return result;
-            //}
         }
+
+        public static void Main(string[] args)
+        {
+            var cat = new Cat();
+            cat.Name = "Oscar";
+            cat.Color = "brown";
+            cat.MeetTheCat();
+
+            // Another way to define variable (Syntax Sugar)
+
+            var cat2 = new Cat()
+            {
+                Name = "Sebastian",
+                Color = "gray",
+
+            };
+            cat2.MeetTheCat();
+        }
+        
     }
 }
