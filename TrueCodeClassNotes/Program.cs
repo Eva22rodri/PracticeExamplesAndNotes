@@ -1,40 +1,23 @@
 ﻿using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.Net.Http;
 
 
 namespace ClassNotes
 {
     class Program
     {
-        public class Cat
-        {
-            public string Name { get; set; }
-            public string Color { get; set; }
-            public int Age { get; set; }
-            public void MeetTheCat() // Void is not returning anything it is simply "writing" something.
-            {
-                Console.WriteLine("Hello, I'm " + Name + " the " + Color + " colored cat!");
-            }
-
-        }
-
         public static void Main(string[] args)
         {
-            var cat = new Cat();
-            cat.Name = "Oscar";
-            cat.Color = "brown";
-            cat.MeetTheCat();
+            string url = "https://api.chucknorris.io/jokes/random"; //Chuck Norris API website.
+            HttpClient client = new HttpClient();          
+            string response = client.GetStringAsync(url).Result;
 
-            // Another way to define variable (Syntax Sugar)
+            int jokeStartIndex = response.IndexOf("value") + 8; //The joke is going to start at the word value
+            int jokeLength = response.Length - jokeStartIndex - 2;
+            string joke = response.Substring(jokeStartIndex, jokeLength);
 
-            var cat2 = new Cat()
-            {
-                Name = "Sebastian",
-                Color = "gray",
-
-            };
-            cat2.MeetTheCat();
-        }
-        
+            Console.WriteLine(joke);
+        }    
     }
 }
