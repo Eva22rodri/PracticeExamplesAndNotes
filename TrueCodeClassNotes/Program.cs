@@ -8,20 +8,22 @@ namespace ClassNotes
 {
     class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            //This is not best practice, but it demonstrates making an API
-            //call and parseing a Json response
+            Comedian myComedian = new Comedian();
+            myComedian.Name = "Mitch Hedberg";
 
-            string url = "https://api.chucknorris.io/jokes/random"; 
-            HttpClient client = new HttpClient();          
-            string response = client.GetStringAsync(url).Result;
+            Singer mySinger = new Singer();
+            mySinger.Name = "Bob Smith";
+            TellToIntroduce(myComedian);
 
-           
+            myComedian.TellChuckNorrisJoke();
+        }
 
-            string joke = JObject.Parse(response).GetValue("value").ToString();
-
-            Console.WriteLine(joke);
-        }    
+        static void TellToIntroduce(Human myHuman)
+        {
+            myHuman.Introduce();
+            myHuman.TellChuckNorrisJoke(); // Can't be done
+        }
     }
 }
