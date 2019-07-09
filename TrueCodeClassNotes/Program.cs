@@ -1,25 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using Newtonsoft.Json.Linq;
 
-// Added a NuGet Package  "NewtonSoft.Json"
 namespace TrueCodeClassNotes
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Comedian myComedian = new Comedian();
-            Singer mySinger = new Singer();
+            int x = 5;
 
-            DoYourPerformance(myComedian);
-            DoYourPerformance(mySinger);
+            int y = x.MultiplyBy3();
+            Console.WriteLine(y);
+            
         }
 
-        static void DoYourPerformance(IPerform performer)
+    }
+
+    static class IntegerExtensions
+    {
+        public static int MultiplyBy3(this int number) // Added a method that was NOT available to int's
         {
-            performer.Perform();
+            return number * 3;
         }
     }
 }
